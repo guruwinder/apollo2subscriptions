@@ -1,7 +1,11 @@
 const express = require('express');
-const { gql } = require('apollo-server-express');
-const { ApolloServer, MockList } = require('apollo-server');
+const { gql, ApolloServer } = require('apollo-server-express');
+// const { ApolloServer } = require('apollo-server');
 const { RedisPubSub } = require('graphql-redis-subscriptions');
+const http = require('http');
+const https = require('https');
+
+const app = express();
 
 const pubsub = new RedisPubSub();
 
@@ -38,14 +42,13 @@ const resolvers = {
 	},
 	Subscription: {
 		subHello: {
-			subscribe: (root, args) => pubsub.asyncIterator('channel' + args.id)
+			subscribe: (root, args) =>  pubsub.asyncIterator('channel' + args.id)
 		}
 	}
 };
 
-const server = new ApolloServer({ typeDefs, resolvers });
-
-server.listen().then(({ url, subscriptionsUrl }) => {
-	console.log(`🚀 Server ready at ${url}`);
-	console.log(`🚀 Subscriptions ready at ${subscriptionsUrl}`);
-});
+const apollo = new ApolloServer({ typeDefs, resolvers });
+apollo.applyMiddleware({app});
+let server = http.createServer(app);
+apollo.installSubscriptionHandlers(server);
+server.listen({port: 5000}, console.log);
