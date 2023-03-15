@@ -34,7 +34,7 @@ const resolvers = {
 	},
 	People: {
 		referredBy: person =>
-			population.filter(p => p.name === person.invitedBy).shift()
+			population.filter(p => p.name == person.invitedBy).shift()
 	},
 	Subscription: {
 		subHello: {
