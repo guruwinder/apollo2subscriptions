@@ -1,9 +1,9 @@
 const express = require('express');
-const { gql } = require('apollo-server-express');
+const { gql } = require("apollo-server-express")
 const { ApolloServer, MockList } = require('apollo-server');
 const { RedisPubSub } = require('graphql-redis-subscriptions');
 
-const pubsub = new RedisPubSub();
+const pubsub  = new RedisPubSub()
 
 const population = [
 	{
@@ -30,7 +30,7 @@ const typeDefs = gql`
 const resolvers = {
 	Query: {
 		people: (root, args) =>
-			population.filter(p => p.name === args.name).shift()
+			population.filter(p => p.name == args.name).shift()
 	},
 	People: {
 		referredBy: person =>
