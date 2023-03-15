@@ -4,6 +4,11 @@
 APPLY_FIXES: all # all, none, or list of linter keys
 # ENABLE: # If you use ENABLE variable, all other languages/formats/tooling-formats will be disabled by default
 # ENABLE_LINTERS: # If you use ENABLE_LINTERS variable, all other linters will be disabled by default
+ENABLE:
+    - JAVASCRIPT
+ENABLE_LINTERS:
+  - JAVASCRIPT_ES
+  - JAVASCRIPT_PRETTIER
 DISABLE:
   - COPYPASTE # Comment to enable checks of excessive copy-pastes
   - SPELL # Comment to enable checks of spelling mistakes
