@@ -11,7 +11,7 @@ const population = [
 		age: 30,
 		invitedBy: 'guru'
 	},
-	{ name: 'guru', age: 29, invitedBy: 'amit' }
+	{ name: 'guru', age: 29, invitedBy: "amit" }
 ];
 
 const typeDefs = gql`
