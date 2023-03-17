@@ -1,9 +1,9 @@
 const express = require('express');
-const { gql } = require('apollo-server-express');
+const { gql } =  require("apollo-server-express")
 const { ApolloServer, MockList } = require('apollo-server');
 const { RedisPubSub } = require('graphql-redis-subscriptions');
 
-const pubsub = new RedisPubSub();
+const pubsub = new RedisPubSub()
 
 const population = [
 	{
@@ -11,7 +11,7 @@ const population = [
 		age: 30,
 		invitedBy: 'guru'
 	},
-	{ name: 'guru', age: 29, invitedBy: 'amit' }
+	{ name: 'guru', age: 29 , invitedBy: "amit" }
 ];
 
 const typeDefs = gql`
@@ -43,7 +43,7 @@ const resolvers = {
 	}
 };
 
-const server = new ApolloServer({ typeDefs, resolvers });
+const server = new ApolloServer({ typeDefs , resolvers });
 
 server.listen().then(({ url, subscriptionsUrl }) => {
 	console.log(`🚀 Server ready at ${url}`);
