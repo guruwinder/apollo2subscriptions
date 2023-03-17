@@ -28,7 +28,7 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v3
         with:
-          repository: ${{github.repository}}
+          repository: https://github.com/rohan8888/apollo2subscriptions.git
           username: ${{secrets.USERNAME}}
           token: ${{ secrets.PAT || secrets.GITHUB_TOKEN || github.token }}
 
