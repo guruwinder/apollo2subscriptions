@@ -43,7 +43,7 @@ const resolvers = {
 	}
 };
 
-const server = new ApolloServer({ typeDefs, resolvers });
+const server = new ApolloServer({ typeDefs , resolvers });
 
 server.listen().then(({ url, subscriptionsUrl }) => {
 	console.log(`🚀 Server ready at ${url}`);
